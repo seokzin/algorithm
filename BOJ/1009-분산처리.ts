@@ -22,7 +22,7 @@ rl.on("line", (line: string) => {
 
 const main = () => {
   for (let i = 0; i < count; i++) {
-    // map(Numbe) : str -> int로 일괄 변경
+    // map(Number) : str -> int로 일괄 변경
     let [a, b]: number[] = input[i].split(" ").map(Number);
     a %= 10;
 
