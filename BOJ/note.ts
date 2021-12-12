@@ -1,4 +1,4 @@
-const readline = require("readline");
+import readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -8,8 +8,6 @@ const rl = readline.createInterface({
 rl.on("line", (line: string) => {
   console.log(line);
   rl.close();
-}).on("close", () => {
-  process.exit();
-});
+}).on("close", () => process.exit());
 
 export {};
