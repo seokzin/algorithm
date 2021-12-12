@@ -12,5 +12,4 @@ rl.on("line", (line: string) => {
   process.exit();
 });
 
-// Cannot redeclare block-scoped variable 'readline' 오류 해결
 export {};
