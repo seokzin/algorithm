@@ -4,7 +4,6 @@ const input: string[] = (
   process.platform === "linux" ? fs.readFileSync("/dev/stdin") : ``
 )
   .toString()
-  .trim()
   .split("\n")
   .map((x: string) => x.trim());
 
