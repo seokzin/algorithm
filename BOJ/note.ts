@@ -1,13 +1,17 @@
-import readline = require("readline");
+const fs = require("fs");
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const input: string[] = (
+  process.platform === "linux" ? fs.readFileSync("/dev/stdin") : ``
+)
+  .toString()
+  .trim()
+  .split("\n")
+  .map((x: string) => x.trim());
 
-rl.on("line", (line: string) => {
-  console.log(line);
-  rl.close();
-}).on("close", () => process.exit());
+const solution = (input: string[]): void => {
+  return;
+};
+
+console.log(solution(input));
 
 export {};
