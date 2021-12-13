@@ -24,44 +24,32 @@ const solution = (input: string[]): string => {
   const n: number = Number(in1);
   const inOrder: number[] = in2.split(" ").map(Number);
   const postOrder: number[] = in3.split(" ").map(Number);
-  const idx: number[] = new Array(n + 1).fill(0);
   const res: number[] = [];
+  // 유니온 타입으로 표현하고 싶음
+  const callStack: any = [[0, n - 1, 0, n - 1]];
 
-  for (let i = 0; i < n; i++) {
-    idx[inOrder[i]] = i;
-  }
+  while (callStack.length) {
+    const [inL, inR, postL, postR] = callStack.pop();
 
-  const preOrder = (param: Param) => {
-    // 범위 역전시 재귀 탈출
-    if (param.inL > param.inR || param.postL > param.postR) {
-      return;
+    if (inL > inR || postL > postR) {
+      continue;
     }
 
-    const root = postOrder[param.postR];
+    const root = postOrder[postR];
     res.push(root);
 
-    const left = idx[root] - param.inL;
-    const right = param.inR - idx[root];
+    let inRootIndex: number = 0;
 
-    const leftParam: Param = {
-      inL: param.inL,
-      inR: param.inL + left - 1,
-      postL: param.postL,
-      postR: param.postL + left - 1,
-    };
-
-    const rightParam: Param = {
-      inL: param.inR - right + 1,
-      inR: param.inR,
-      postL: param.postR - right,
-      postR: param.postR - 1,
-    };
-
-    preOrder(leftParam);
-    preOrder(rightParam);
-  };
-
-  preOrder({ inL: 0, inR: n - 1, postL: 0, postR: n - 1 });
+    for (let i = inL; i <= inR; i++) {
+      if (inOrder[i] === root) {
+        inRootIndex = i;
+        break;
+      }
+    }
+    const postLeftEnd = postL + (inRootIndex - 1 - inL);
+    callStack.push([inRootIndex + 1, inR, postLeftEnd + 1, postR - 1]);
+    callStack.push([inL, inRootIndex - 1, postL, postLeftEnd]);
+  }
 
   return res.join(" ");
 };
