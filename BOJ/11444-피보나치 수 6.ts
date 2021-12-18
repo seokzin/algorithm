@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const input: string[] = (
-  process.platform === "linux" ? fs.readFileSync("/dev/stdin") : `1000`
+  process.platform === "linux" ? fs.readFileSync("/dev/stdin") : `314139047031`
 )
   .toString()
   .split("\n")
@@ -10,19 +10,19 @@ const input: string[] = (
 const solution = (input: string[]): number => {
   // JS는 함수를 최상단 배치하는 것이 맞을까?
   const multi = (a: number[][], b: number[][]): number[][] => {
-    let mul = Array.from(Array(2), () => Array(2).fill(0));
+    let mul = Array.from(Array(2), () => Array(2).fill(BigInt(0)));
 
     for (let i = 0; i < 2; i++) {
       for (let j = 0; j < 2; j++) {
         for (let k = 0; k < 2; k++) {
-          mul[i][j] += a[i][k] * b[k][j];
+          mul[i][j] += BigInt(a[i][k]) * BigInt(b[k][j]);
         }
       }
     }
 
     for (let i = 0; i < 2; i++) {
       for (let j = 0; j < 2; j++) {
-        mul[i][j] %= 1000000007;
+        mul[i][j] %= BigInt(1000000007);
       }
     }
 
@@ -49,10 +49,10 @@ const solution = (input: string[]): number => {
     n = Math.floor(n / 2); // JS는 n//2가 없음
   }
 
-  return res[1][0];
+  return Number(res[1][0]);
 };
 
-// 풀 수 없음 - JS는 최대 안전 정수값이 존재. 그 이상은 부동소수점으로 저장하여 오차 발생 (Number.MAX_SAFE_INTEGER = 9007199254740991)
+// 디버깅 모두 정상으로 나오나 백준은 채점 하자마자 틀렸다고 나옴..
 console.log(solution(input));
 
 export {};
