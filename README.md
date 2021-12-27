@@ -36,3 +36,16 @@ TypeScript를 디버깅 하기 위해 필요한 패키지가 2개 있다.
 
 - 여러 PS 코드가 생기면 Cannot redeclare block-scoped variable 'readline' 오류 발생
 - `export {};` 를 추가하여 오류 해결
+
+<br />
+<br />
+
+### solved.ac
+
+<br />
+
+<div align="center">
+
+[![seokzin's solved.ac Tier](http://mazassumnida.wtf/api/v2/generate_badge?boj=seokzin)](https://solved.ac/seokzin)
+
+</div>
