@@ -19,15 +19,15 @@ TypeScript를 디버깅 하기 위해 필요한 패키지가 2개 있다.
 
 <br/>
 
-### Usage
+## Usage
 
 코드 실행 방법은 2가지가 있다.
 
-#### 1. `ts-node filename.ts`
+### 1. `ts-node filename.ts`
 
 - JS로 변환 과정을 거치지 않고 바로 컴파일
 
-#### 2. `tsc filename.ts` → `node filename.js`
+### 2. `tsc filename.ts` → `node filename.js`
 
 - JS로 변환을 거쳐 filename.js 파일이 생성되고 이를 실행하는 방법
 - js로 변환된 코드를 확인할 수 있는 장점
@@ -40,7 +40,18 @@ TypeScript를 디버깅 하기 위해 필요한 패키지가 2개 있다.
 <br />
 <br />
 
-### solved.ac
+## Plans
+
+- ES6 문법으로만 풀기
+- 불변성 유지하기
+- 함수형, 반응형 프로그래밍 연습
+- 리팩토링 연습
+- Jest
+
+<br />
+<br />
+
+## solved.ac
 
 <br />
 
