@@ -4,13 +4,13 @@ const input: string[] = (
   process.platform === "linux" ? fs.readFileSync("/dev/stdin") : ``
 )
   .toString()
-  .split("\n")
-  .map((x: string) => x.trim());
+  .trim()
+  .split("\n");
 
 const solution = (input: string[]): void => {
   return;
 };
 
-console.log(solution(input));
+solution(input);
 
 export {};
