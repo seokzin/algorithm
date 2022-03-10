@@ -1,8 +1,6 @@
 const fs = require("fs");
 
-const input: string[] = (
-  process.platform === "linux" ? fs.readFileSync("/dev/stdin") : ``
-)
+const input: string[] = (process.platform === "linux" ? fs.readFileSync("/dev/stdin") : ``)
   .toString()
   .trim()
   .split("\n");
