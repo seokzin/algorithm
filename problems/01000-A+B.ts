@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // test cases
-const tc = `1 2`;
+const tc = ``;
 
 // get inputs
 const inputs: string[] = (
