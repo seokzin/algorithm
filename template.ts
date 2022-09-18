@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // test cases
-const tc = `1 2`;
+const tc = ``;
 
 // get inputs
 const inputs: string[] = (
@@ -12,13 +12,12 @@ const inputs: string[] = (
   .split('\n');
 
 // utils
-const add = (a: number, b: number) => a + b;
 
 // solution
 const solution = () => {
   const [a, b] = inputs[0].split(' ').map(Number);
 
-  return add(a, b);
+  return [a, b];
 };
 
 console.log(solution());
