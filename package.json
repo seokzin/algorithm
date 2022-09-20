@@ -1,5 +1,7 @@
 {
-  "type": "module",
+  "compilerOptions": {
+    "module": "CommonJS"
+  },
   "scripts": {
     "test": "jest"
   },
