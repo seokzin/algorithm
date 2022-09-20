@@ -18,6 +18,10 @@ describe('range >', () => {
       expect(range(10, 0, -2)).toEqual([10, 8, 6, 4, 2]);
     });
 
+    it('no step >', () => {
+      expect(range(0, 10, 0)).toEqual([]);
+    });
+
     it('wrong step >', () => {
       expect(range(10, 0, 2)).toEqual([]);
       expect(range(0, 10, -2)).toEqual([]);
