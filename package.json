@@ -3,7 +3,8 @@
     "module": "CommonJS"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose",
+    "test:watch": "jest --verbose --watch"
   },
   "dependencies": {
     "ts-node": "^10.4.0",
