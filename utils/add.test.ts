@@ -1,11 +1,12 @@
 import { add } from './add';
+import { range } from './range';
 
-describe('js test', () => {
-  it('2 arguments', () => {
+describe('add >', () => {
+  it('two arguments >', () => {
     expect(add(3, 4)).toBe(7);
   });
 
-  it('multiple arguments', () => {
-    expect(add(3, 4)).toBe(7);
+  it('multiple arguments >', () => {
+    expect(add(...range(10))).toBe(45);
   });
 });
