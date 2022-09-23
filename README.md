@@ -1,5 +1,7 @@
 # TypeScript Problem Solving
 
+모든 것을 함수화 하겠다는 의지..!
+
 ## 🛠 Install
 
 ```bash
@@ -39,8 +41,3 @@ yarn test:watch # run live test
 [![seokzin's solved.ac Tier](http://mazassumnida.wtf/api/v2/generate_badge?boj=seokzin)](https://solved.ac/seokzin)
 
 </div>
-```
-
-```
-
-```
