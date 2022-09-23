@@ -1,26 +1,21 @@
 const fs = require('fs');
 
-// test cases
-const tc = ``;
-
-// get inputs
-const inputs: string[] = (
-  process.platform === 'linux' ? fs.readFileSync('/dev/stdin') : tc
-)
-  .toString()
-  .trim()
-  .split('\n');
+const input = (tc = '') =>
+  (process.platform === 'linux' ? fs.readFileSync('/dev/stdin') : tc)
+    .toString()
+    .split('\n')
+    .map((str) => str.trim());
 
 // utils
 const add = (a: number, b: number) => a + b;
 
 // solution
-const solution = () => {
+export const solution = (inputs: string[]) => {
   const [a, b] = inputs[0].split(' ').map(Number);
 
   return add(a, b);
 };
 
-console.log(solution());
+console.log(solution(input()));
 
 export {};

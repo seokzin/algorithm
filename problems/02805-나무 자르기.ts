@@ -1,19 +1,10 @@
 const fs = require('fs');
 
-// test cases
-const tc1 = `4 7
-20 15 10 17`; // 15
-
-const tc2 = `5 20
-4 42 40 26 46`; // 36
-
-// get inputs
-const inputs: string[] = (
-  process.platform === 'linux' ? fs.readFileSync('/dev/stdin') : tc1
-)
-  .toString()
-  .trim()
-  .split('\n');
+const input = (tc = '') =>
+  (process.platform === 'linux' ? fs.readFileSync('/dev/stdin') : tc)
+    .toString()
+    .split('\n')
+    .map((str) => str.trim());
 
 // utils
 export const binarySearch = (arr: number[], target: number) => {
@@ -37,7 +28,7 @@ export const binarySearch = (arr: number[], target: number) => {
 };
 
 // solution
-const solution = () => {
+export const solution = (inputs: string[]) => {
   const [n, m] = inputs[0].split(' ').map(Number);
   const trees = inputs[1].split(' ').map(Number);
   let result = Math.min(...trees);
@@ -58,7 +49,6 @@ const solution = () => {
   }
 };
 
-console.log(solution());
+console.log(solution(input()));
 
-// ignore redeclare error
 export {};
