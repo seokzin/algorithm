@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const input = (tc = '') =>
+const input = (tc = '\n'.repeat(100)) =>
   (process.platform === 'linux' ? fs.readFileSync('/dev/stdin') : tc)
     .toString()
     .split('\n')
