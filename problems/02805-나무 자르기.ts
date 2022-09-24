@@ -7,46 +7,62 @@ const input = (tc = '\n'.repeat(100)) =>
     .map((str) => str.trim());
 
 // utils
-export const binarySearch = (arr: number[], target: number) => {
+const binarySearch = (
+  ascendingArray: number[],
+  target: number,
+  trees: number[]
+) => {
   let start = 0;
-  let end = arr.length - 1;
-  let mid = Math.floor((start + end) / 2);
+  let end = ascendingArray.length - 1;
+  let answer = 0;
 
   while (start <= end) {
-    if (arr[mid] === target) {
-      return mid;
-    } else if (arr[mid] > target) {
-      end = mid - 1;
-    } else {
-      start = mid + 1;
-    }
+    const mid = Math.floor((start + end) / 2);
+    const height = ascendingArray[mid];
 
-    mid = Math.floor((start + end) / 2);
+    if (restOfTree(trees, height) >= target) {
+      if (answer < height) {
+        answer = height;
+      }
+      start = mid + 1;
+    } else {
+      end = mid - 1;
+    }
   }
 
-  return -1;
+  return answer;
+};
+
+const restOfTree = (trees: number[], height: number) => {
+  let rest = 0;
+
+  for (let i = 0; i < trees.length; i++) {
+    rest += Math.max(0, trees[i] - height);
+  }
+
+  return rest;
+};
+
+const range = (start: number, end?: number, step: number = 1): number[] => {
+  if (end === undefined) {
+    end = start;
+    start = 0;
+  }
+
+  const result = [];
+  for (let i = start; step > 0 ? i < end : i > end; i += step) {
+    result.push(i);
+  }
+
+  return result;
 };
 
 // solution
 export const solution = (inputs: string[]) => {
-  const [n, m] = inputs[0].split(' ').map(Number);
+  const [, m] = inputs[0].split(' ').map(Number);
   const trees = inputs[1].split(' ').map(Number);
-  let result = Math.min(...trees);
 
-  for (let i = Math.min(...trees); i < Math.max(...trees); i++) {
-    result += 1;
-    let rest = 0;
-
-    for (let j = 0; j < n; j++) {
-      rest += Math.max(0, trees[j] - result);
-    }
-
-    // console.log(rest, result);
-
-    if (rest <= m) {
-      return result;
-    }
-  }
+  return binarySearch(range(1, Math.max(...trees) + 1), m, trees);
 };
 
 console.log(solution(input()));
