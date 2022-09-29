@@ -21,9 +21,7 @@ const binarySearch = (
     const height = ascendingArray[mid];
 
     if (restOfTree(trees, height) >= target) {
-      if (answer < height) {
-        answer = height;
-      }
+      answer = Math.max(answer, height);
       start = mid + 1;
     } else {
       end = mid - 1;
@@ -33,15 +31,11 @@ const binarySearch = (
   return answer;
 };
 
-const restOfTree = (trees: number[], height: number) => {
-  let rest = 0;
-
-  for (let i = 0; i < trees.length; i++) {
-    rest += Math.max(0, trees[i] - height);
-  }
-
-  return rest;
-};
+const restOfTree = (trees: number[], height: number) =>
+  range(trees.length).reduce(
+    (acc, cur) => Math.max(0, acc + trees[cur] - height),
+    0
+  );
 
 const range = (start: number, end?: number, step: number = 1): number[] => {
   if (end === undefined) {
