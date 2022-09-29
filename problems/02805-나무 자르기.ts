@@ -7,21 +7,16 @@ const input = (tc = '\n'.repeat(100)) =>
     .map((str) => str.trim());
 
 // utils
-const binarySearch = (
-  ascendingArray: number[],
-  target: number,
-  trees: number[]
-) => {
+const binarySearch = (target: number, trees: number[]) => {
   let start = 0;
-  let end = ascendingArray.length - 1;
+  let end = Math.max(...trees);
   let answer = 0;
 
   while (start <= end) {
     const mid = Math.floor((start + end) / 2);
-    const height = ascendingArray[mid];
 
-    if (restOfTree(trees, height) >= target) {
-      answer = Math.max(answer, height);
+    if (restOfTree(trees, mid) >= target) {
+      answer = Math.max(answer, mid);
       start = mid + 1;
     } else {
       end = mid - 1;
@@ -32,31 +27,14 @@ const binarySearch = (
 };
 
 const restOfTree = (trees: number[], height: number) =>
-  range(trees.length).reduce(
-    (acc, cur) => Math.max(0, acc + trees[cur] - height),
-    0
-  );
-
-const range = (start: number, end?: number, step: number = 1): number[] => {
-  if (end === undefined) {
-    end = start;
-    start = 0;
-  }
-
-  const result = [];
-  for (let i = start; step > 0 ? i < end : i > end; i += step) {
-    result.push(i);
-  }
-
-  return result;
-};
+  trees.reduce((acc, cur) => acc + Math.max(0, cur - height), 0);
 
 // solution
 export const solution = (inputs: string[]) => {
   const [, m] = inputs[0].split(' ').map(Number);
   const trees = inputs[1].split(' ').map(Number);
 
-  return binarySearch(range(1, Math.max(...trees) + 1), m, trees);
+  return binarySearch(m, trees);
 };
 
 console.log(solution(input()));
