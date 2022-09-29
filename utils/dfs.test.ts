@@ -1,4 +1,4 @@
-import { dfs } from './dfs';
+import { dfsWithStack, dfsWithRecursion } from './dfs';
 
 describe('dfs', () => {
   it('should traverse tree in depth-first order', () => {
@@ -23,7 +23,10 @@ describe('dfs', () => {
     };
 
     const names = [];
-    dfs(tree, (node) => names.push(node.name));
+    dfsWithRecursion(tree, (node) => names.push(node.name));
+    expect(names).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
+
+    dfsWithStack(tree, (node) => names.push(node.name));
     expect(names).toEqual(['A', 'E', 'G', 'F', 'B', 'D', 'C']);
   });
 });
