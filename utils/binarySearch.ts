@@ -1,18 +1,17 @@
-export const binarySearch = (ascendingArray: number[], target: number) => {
+export const binarySearch = (list: number[], callback) => {
   let start = 0;
-  let end = ascendingArray.length - 1;
-  let mid = Math.floor((start + end) / 2);
+  let end = list.length - 1;
 
   while (start <= end) {
-    if (ascendingArray[mid] === target) {
+    const mid = Math.floor((start + end) / 2);
+
+    if (callback(list[mid]) === 0) {
       return mid;
-    } else if (ascendingArray[mid] > target) {
+    } else if (callback(list[mid]) > 0) {
       end = mid - 1;
     } else {
       start = mid + 1;
     }
-
-    mid = Math.floor((start + end) / 2);
   }
 
   return -1;
