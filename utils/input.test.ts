@@ -1,7 +1,7 @@
 import { input } from './input';
 
 describe('input >', () => {
-  it('return input lines array >', () => {
+  it('should return array of input lines', () => {
     const tc1 = `123`;
     const tc2 = `4 7
     20 15 10 17`;

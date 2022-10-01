@@ -21,7 +21,7 @@ describe('bfs >', () => {
     ],
   };
 
-  it('search tree in breadth-first order >', () => {
+  it('should search tree in breadth-first order', () => {
     const result = [];
     bfs(tree, (node) => result.push(node.name));
     expect(result).toEqual(['A', 'B', 'E', 'C', 'D', 'F', 'G']);

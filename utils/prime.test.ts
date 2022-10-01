@@ -1,7 +1,7 @@
 import { prime } from './prime';
 
 describe('prime >', () => {
-  it('return prime list >', () => {
+  it('should return prime list', () => {
     const result = prime(10);
     expect(result).toEqual([
       false,

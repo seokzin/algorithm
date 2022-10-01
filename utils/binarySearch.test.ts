@@ -2,12 +2,12 @@ import { binarySearch } from './binarySearch';
 import { range } from './range';
 
 describe('binarySearch >', () => {
-  it('return index of target number >', () => {
+  it('should return index of target number', () => {
     const target = 5;
     expect(binarySearch(range(1, 11), (num) => num - target)).toBe(4);
   });
 
-  it('return -1 if target number is not in list >', () => {
+  it('should return -1 if target number is not in list', () => {
     const target = 11;
     expect(binarySearch(range(1, 11), (num) => num - target)).toBe(-1);
   });
