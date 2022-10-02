@@ -8,7 +8,7 @@ const input = (tc = '\n'.repeat(100)) =>
 
 // utils
 const binarySearch = (target: number, list: number[]) => {
-  let start = 0;
+  let start = 1;
   let end = Math.max(...list);
   let answer = 0;
 

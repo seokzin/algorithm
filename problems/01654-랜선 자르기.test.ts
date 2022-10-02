@@ -12,3 +12,5 @@ describe('01654-랜선 자르기 >', () => {
     expect(solution(input(tc))).toBe(an);
   });
 });
+
+// FAIL 1. ctc1 > start가 0이 아닌 1로 시작해야 한다.
