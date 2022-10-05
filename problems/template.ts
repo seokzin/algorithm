@@ -3,17 +3,13 @@ const fs = require('fs');
 const input = (tc = '\n'.repeat(100)) =>
   (process.platform === 'linux' ? fs.readFileSync('/dev/stdin') : tc)
     .toString()
-    .split('\n')
-    .map((str) => str.trim());
+    .split('\n');
 
 // utils
-const add = (a: number, b: number) => a + b;
 
 // solution
 export const solution = (inputs: string[]) => {
-  const [a, b] = inputs[0].split(' ').map(Number);
-
-  return add(a, b);
+  return inputs;
 };
 
 console.log(solution(input()));
