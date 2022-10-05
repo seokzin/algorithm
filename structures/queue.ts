@@ -1,13 +1,4 @@
-interface Queue<T> {
-  enqueue: (item: T) => void;
-  dequeue: () => void;
-  peek: () => T;
-  isEmpty: () => boolean;
-  size: () => number;
-  getAll: () => T[];
-}
-
-export const queue = <T>(arr: T[] = []): Queue<T> => {
+export const queue = <T>(arr: T[] = []) => {
   const q: T[] = [...arr];
 
   return {

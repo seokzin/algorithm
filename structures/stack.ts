@@ -1,13 +1,4 @@
-interface Stack<T> {
-  push: (item: T) => void;
-  pop: () => void;
-  peek: () => T;
-  isEmpty: () => boolean;
-  size: () => number;
-  getAll: () => T[];
-}
-
-export const stack = <T>(arr: T[] = []): Stack<T> => {
+export const stack = <T>(arr: T[] = []) => {
   const s: T[] = [...arr];
 
   return {
