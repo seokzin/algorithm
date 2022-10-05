@@ -12,21 +12,19 @@ const getDocument = (priorities: number[], target: number) => {
     (acc, cur, idx) => [...acc, { idx, priority: cur }],
     []
   );
+  let printCount = 1;
 
-  dic.forEach(({ idx, priority }, i) => {
-    console.log(idx, priority, i, dic);
-    console.log('priority', priority, Math.max(...dic.map((d) => d.priority)));
-    if (priority < Math.max(...dic.map((d) => d.priority))) {
-      console.log('111');
-      dic.push(dic.shift());
-    } else if (idx === target) {
-      console.log('222');
-      return i + 1;
+  while (true) {
+    const first = dic.shift();
+
+    if (dic.some((doc) => first.priority < doc.priority)) {
+      dic.push(first);
+    } else if (first.idx === target) {
+      return printCount;
     } else {
-      console.log('333');
-      dic.shift();
+      printCount += 1;
     }
-  });
+  }
 };
 
 const range = (start: number, end?: number, step: number = 1): number[] => {
@@ -46,12 +44,15 @@ const range = (start: number, end?: number, step: number = 1): number[] => {
 // solution
 export const solution = (inputs: string[]) => {
   const tc = Number(inputs[0]);
+  const result = [];
 
   range(tc).forEach((i) => {
     const [n, m] = inputs[i * 2 + 1].split(' ').map(Number);
     const priorities = inputs[i * 2 + 2].split(' ').map(Number);
-    return getDocument(priorities, m);
+    result.push(getDocument(priorities, m));
   });
+
+  return result.join('\n');
 };
 
 console.log(solution(input()));
