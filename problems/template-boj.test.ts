@@ -1,5 +1,5 @@
 import { input } from '../utils/input';
-import { solution } from './template';
+import { solution } from './template-boj';
 
 describe('00000-template >', () => {
   it('tc #1 >', () => {
