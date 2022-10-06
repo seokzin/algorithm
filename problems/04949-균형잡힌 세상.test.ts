@@ -20,14 +20,8 @@ yes
 yes`;
     expect(solution(input(tc))).toBe(an);
   });
-
-  it('ctc #1 >', () => {
-    const tc = `([)])
-.`;
-    const an = `no`;
-    expect(solution(input(tc))).toBe(an);
-  });
 });
 
 // FAIL 1. forEach 내부의 return은 forEach만 종료시키고, 외부의 함수는 종료되지 않음
-// FAIL 2. input을 trim하는 것이 무조건 옳은 것은 아님. 의도적으로 공백을 제공할 수 있음.
+// FAIL 2. input[] 요소들을 trim하는 것이 무조건 옳은 것은 아님. 의도적으로 공백을 제공할 수 있음.
+// FAIL 3. stringify된 input을 trim 하지 않으면 오류 나는 문제가 있음. (시간 너무 뺏김.. 💩)

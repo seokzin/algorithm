@@ -3,6 +3,7 @@ const fs = require('fs');
 const input = (tc = '') =>
   (process.platform === 'linux' ? fs.readFileSync('/dev/stdin') : tc)
     .toString()
+    .trim()
     .split('\n');
 
 // utils
