@@ -1,14 +1,35 @@
-export const dfsWithRecursion = (node, callback) => {
-  callback(node);
-  node.children.forEach((child) => dfsWithRecursion(child, callback));
-};
-
-export const dfsWithStack = (node, callback) => {
+export const dfsWithStack = (
+  graph: { [key: string]: string[] },
+  node: string
+) => {
   const stack = [node];
+  const visited = [];
 
   while (stack.length > 0) {
     const current = stack.pop();
-    callback(current);
-    current.children.forEach((child) => stack.push(child));
+    if (!visited.includes(current)) {
+      visited.push(current);
+      stack.push(...graph[current]);
+    }
   }
+
+  return visited;
+};
+
+export const dfsWithRecursion = (
+  graph: { [key: string]: string[] },
+  node: string
+) => {
+  const visited = [];
+
+  const dfs = (node) => {
+    if (!visited.includes(node)) {
+      visited.push(node);
+      graph[node].forEach((neighbor) => dfs(neighbor));
+    }
+  };
+
+  dfs(node);
+
+  return visited;
 };
