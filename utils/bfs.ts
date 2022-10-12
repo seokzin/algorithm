@@ -1,9 +1,14 @@
-export const bfs = (node, callback) => {
+export const bfs = (graph: { [key: string]: string[] }, node: string) => {
   const queue = [node];
+  const visited = [];
 
   while (queue.length > 0) {
     const current = queue.shift();
-    callback(current);
-    current.children.forEach((child) => queue.push(child));
+    if (!visited.includes(current)) {
+      visited.push(current);
+      queue.push(...graph[current]);
+    }
   }
+
+  return visited;
 };

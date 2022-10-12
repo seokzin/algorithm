@@ -1,29 +1,21 @@
 import { bfs } from './bfs';
 
 describe('bfs >', () => {
-  const tree = {
-    name: 'A',
-    children: [
-      {
-        name: 'B',
-        children: [
-          { name: 'C', children: [] },
-          { name: 'D', children: [] },
-        ],
-      },
-      {
-        name: 'E',
-        children: [
-          { name: 'F', children: [] },
-          { name: 'G', children: [] },
-        ],
-      },
-    ],
+  const graph = {
+    A: ['B', 'C'],
+    B: ['A', 'D'],
+    C: ['A', 'G', 'H', 'I'],
+    D: ['B', 'E', 'F'],
+    E: ['D'],
+    F: ['D'],
+    G: ['C'],
+    H: ['C'],
+    I: ['C', 'J'],
+    J: ['I'],
   };
 
-  it('should search tree in breadth-first order', () => {
-    const result = [];
-    bfs(tree, (node) => result.push(node.name));
-    expect(result).toEqual(['A', 'B', 'E', 'C', 'D', 'F', 'G']);
+  it('should search graph in breadth-first order', () => {
+    const visited = bfs(graph, 'A');
+    expect(visited).toEqual(['A', 'B', 'C', 'D', 'G', 'H', 'I', 'E', 'F', 'J']);
   });
 });
