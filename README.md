@@ -1,35 +1,15 @@
 # TypeScript Problem Solving
 
-모든 것을 함수화 하겠다는 의지..!
-
-## 🛠 Install
-
-```bash
-yarn install
-yarn global add ts-node
-```
-
-<br />
-
-## 📑 Usage
-
-## 🛠 Install
-
-```bash
-ts-node filename.ts # run typescript file
-tsc filename.ts # compile to javascript
-yarn test:watch # run live test
-```
+모든 로직을 함수화 하겠다는 의지!
 
 <br />
 
 ## 🎯 Goal
 
-- ES6
-- Functional Programming
-- TDD
+- ES6 문법 지향
+- 함수형 프로그래밍
+- 테스트 코드
 
-<br />
 <br />
 
 ## 🏆 solved.ac
